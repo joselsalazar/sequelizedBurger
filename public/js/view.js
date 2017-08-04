@@ -112,7 +112,20 @@ $(document).ready(function() {
     $newInputRow.data("todo", todo);
     if (todo.complete) {
       $newInputRow.attr("class", "list-group-item eaten");
-      $newInputRow.find("button.complete").text("Eaten!").attr("class", "complete btn btn-default disabled");
+      $newInputRow.find("button.complete").text("Eaten!").attr("class", "complete btn btn-default disabled").prop("disabled", true);
+    }
+    var burgerType = ["chicken", "double", "bacon", "cheese"];
+    var burgerName = todo.text.toLowerCase();
+    var routeSrc = `<img class="burger" src="img/`;
+    var closeSrc = `.png">`;
+    if(burgerName.includes(burgerType[0])) {
+      $newInputRow.prepend(routeSrc + burgerType[0] + closeSrc);
+    } else if (burgerName.includes(burgerType[1])) {
+      $newInputRow.prepend(routeSrc + burgerType[1] + closeSrc);
+    } else if (burgerName.includes(burgerType[2])) {
+      $newInputRow.prepend(routeSrc + burgerType[2] + closeSrc);
+    } else {
+      $newInputRow.prepend(routeSrc + burgerType[3] + closeSrc);
     }
     return $newInputRow;
   }
